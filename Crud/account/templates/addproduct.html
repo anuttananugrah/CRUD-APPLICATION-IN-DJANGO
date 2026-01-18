@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%block base%}
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="w-50 border border-2 border-secondary shadow">
+        <form action="" method="post" class="text-center" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="container">
+
+                <table class="table table-borderless bg-transparent" style="background-color: rgba(255, 255, 255, 0.5) ;">
+                    <h1 class="m-3 p-2 text-dark" style="background-color: rgba(255, 255, 255, 0.76) ;">Add Product</h1>
+                    {{form.as_table}}
+                    
+                    
+                </table>
+            </div>
+            <button class="btn btn-success m-2">Submit</button>
+        </form>
+
+    </div>
+</div>
+<style>
+    .table,.table th,.table td,.table input{
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+</style>
+{%endblock base%}

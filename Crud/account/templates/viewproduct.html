@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block base %}
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-start mb-4">
+        <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle mt-5" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Category
+            </button>
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'filterview' 'all' %}">All</a></li>
+                <li><a class="dropdown-item" href="{% url 'filterview' 'mobile' %}">Mobile</a></li>
+                <li><a class="dropdown-item" href="{% url 'filterview' 'tv' %}">TV</a></li>
+                <li><a class="dropdown-item" href="{% url 'filterview' 'laptop' %}">Laptop</a></li>
+                <li><a class="dropdown-item" href="{% url 'filterview' 'fridge' %}">Fridge</a></li>
+                <li><a class="dropdown-item" href="{% url 'filterview' 'washing_machine' %}">
+                        Washing Machine
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ product.image.url }}" class="card-img-top" style="height: 250px;" alt="product image">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="fw-bold text-bottem m-2" style="display: inline;">₹ {{ product.price }}</p>
+                    <span class="badge bg-secondary">{{ product.category }}</span>
+                </div>
+                <div class="d-flex justify-content-end  mb-4">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Edit / Delete
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'deleteproduct' product.id %}">delete product</a></li>
+                            <li><a class="dropdown-item" href="{% url 'editproduct' product.id %}">Edit Product</a></li>
+                        </ul>
+                    </div>
+                    <div class="text-center mx-2">
+                        <a href="#" class="btn btn-warning">BUY</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-end text-secondary"><b>PLEASE SELECT CATEGORY</b></p>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock base %}
