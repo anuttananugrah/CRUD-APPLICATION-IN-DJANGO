@@ -62,6 +62,7 @@ class UpdateProductView(View):
             return redirect('viewproduct')
         return render('viewproduct.html',{'form':form_data})
     print("testing")
+    print("third testing")
     print("Second Testing")
 
 
