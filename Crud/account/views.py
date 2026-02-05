@@ -59,7 +59,6 @@ class UpdateProductView(View):
         form_data=ProductsModelForm(data=request.POST,files=request.FILES,instance=data)
         if form_data.is_valid():
             form_data.save()
-            print(form_data)
             return redirect('viewproduct')
         return render('viewproduct.html',{'form':form_data})
 
