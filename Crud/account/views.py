@@ -61,5 +61,6 @@ class UpdateProductView(View):
             form_data.save()
             return redirect('viewproduct')
         return render('viewproduct.html',{'form':form_data})
+    print("testing")
 
 
